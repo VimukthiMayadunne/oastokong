@@ -69,7 +69,7 @@ async function rel() {
         console.log("Unable To Read the Swagger File");
       } else {
         swagger = await data;
-        var rslt=(swagger.openapi != null )?oas3:swagger2(swagger);
+        var rslt=(swagger.openapi != null )?oas3(swagger):swagger2(swagger);
         console.info(rslt)
       }
      
