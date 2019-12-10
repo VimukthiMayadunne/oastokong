@@ -1,7 +1,7 @@
 {
   "name": "oastokong",
   "description": "Simple CLI tool to deploy an API in kong-gateway by providing a swagger file",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Vimukthi Mayadunne @VimukthiMayadunne",
   "bin": {
     "oastokong": "./bin/run"
