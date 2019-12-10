@@ -69,25 +69,11 @@ async function rel() {
         console.log("Unable To Read the Swagger File");
       } else {
         swagger = await data;
-        try {
-          host =
-            swagger.schemes["0"] +
-            "://" +
-            swagger.host +
-            swagger.basePath +
-            "/";
-          var name = data.info.title;
-          name = name.replace(/\W/g, "");
-          url = konguri + name + "/routes";
-          var tags = data.tags != null ? await addtags(data.tags) : [];
-          createService(name, host, tags);
-        } catch (error) {
-          console.log(
-            "Please make sure the Swagger filr contains the following fileds"
-          );
-          console.log("1.Schemse 2.Host 3.BasePath");
-        }
+        var rslt=(swagger.openapi != null )?oas3:swagger2(swagger);
+        console.info(rslt)
       }
+     
+    
     });
   } catch (Error) {
     console.log("Error While reading the swagger file");
@@ -135,7 +121,7 @@ async function createService(name: any, host: any, tags: any) {
           console.log("Service ID   :", data.id);
           console.log("Service Name :", data.name);
           await createRoute(url, name);
-          await addSecurity(swagger.securityDefinitions, seviceID);
+          await addSecurity(swagger.components.secritySchemes, seviceID);
           apiYaml = await readFile.readApiYaml();
           await readFile.addPlugins(apiYaml, seviceID);
         }
@@ -306,5 +292,69 @@ async function createPluginApiKey(serviceID: any, name: any) {
   var target = `http://localhost:8001/services/${serviceID}/plugins`;
   await newPlugin(target, body);
 }
+
+async function swagger2(swagger:any){
+    return new Promise(async function(resolve,reject){  
+    try {
+      host =
+        swagger.schemes["0"] +
+        "://" +
+        swagger.host +
+        swagger.basePath +
+        "/";
+      var name = swagger.info.title;
+      name = name.replace(/\W/g, "");
+      url = konguri + name + "/routes";
+      var tags = swagger.tags != null ? await addtags(swagger.tags) : [];
+      createService(name, host, tags);
+    } catch (error) {
+      console.log(
+        "Please make sure the Swagger filr contains the following fileds"
+      );
+      console.log("1.Schemse 2.Host 3.BasePath");
+      console.error(error)
+      reject(error)
+    }
+    })
+}
+
+async function oas3(swagger:any){
+    return new Promise(async function(resolve,reject){  
+    try {
+      host =swagger.servers["0"]+"/";
+      var name = swagger.info.title;
+      name = name.replace(/\W/g, "");
+      url = konguri + name + "/routes";
+      var tags = swagger.tags != null ? await addtags(swagger.tags) : [];
+      createService(name, host, tags);
+    } catch (error) {
+      console.log(
+        "Please make sure the Swagger filr contains the following fileds"
+      );
+      console.log("1.Schemse 2.Host 3.BasePath");
+      console.error(error)
+      reject(error)
+    }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = {main};
