@@ -4,8 +4,8 @@ Swagger to Kong Admin
 Simple cli tool to deplot  swagger definition in kong gateway using Nodejs and oclif framework 
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/toenvoy.svg)](https://npmjs.org/package/oastokong)
-[![License](https://img.shields.io/npm/l/toenvoy.svg)](https://github.com/VimukthiMayadunne/oastokonng/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/oastokong.svg)](https://npmjs.org/package/oastokong)
+[![License](https://img.shields.io/npm/l/oastokong.svg)](https://github.com/VimukthiMayadunne/oastokonng/blob/master/package.json)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Downloads/week](https://img.shields.io/npm/dw/oastokong.svg)](https://npmjs.org/package/oastokong)
 
