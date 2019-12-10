@@ -1,0 +1,60 @@
+{
+  "name": "oastokong",
+  "description": "Simple CLI tool to deploy an API in kong-gateway by providing a swagger file",
+  "version": "0.0.0",
+  "author": "Vimukthi Mayadunne @VimukthiMayadunne",
+  "bin": {
+    "oastokong": "./bin/run"
+  },
+  "bugs": "https://github.com/VimukthiMayadunne/oastokong/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "tslib": "^1",
+    "mongoose": "^5.7.7",
+    "path": "^0.12.7",
+    "read-yaml": "^1.1.0",
+    "clear": "^0.1.0",
+    "figlet": "^1.2.1",
+    "inquirer": "^7.0.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "@oclif/test": "^1",
+    "@types/chai": "^4",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "chai": "^4",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "eslint-config-oclif-typescript": "^0.1",
+    "mocha": "^5",
+    "nyc": "^14",
+    "ts-node": "^8",
+    "typescript": "^3.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "homepage": "https://github.com/VimukthiMayadunne/oastokong",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "bin": "oastokong"
+  },
+  "repository": "VimukthiMayadunne/oastokong",
+  "scripts": {
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\""
+  },
+  "types": "lib/index.d.ts"
+}
