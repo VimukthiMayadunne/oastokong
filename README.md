@@ -11,6 +11,7 @@ Simple cli tool to deplot  swagger definition in kong gateway using Nodejs and o
 
 # Pre-requisite 
 - node.js
+- Kong
 
 
 
@@ -28,18 +29,17 @@ $ npm install -g oastokong
 
          
 # Runnig the Cli-Tool
+Make sure kong Admin APi is runing on the localhost:8001 and Admin api security is disabled.
+
 1) Navigate to the location where the swagger file is located 
    Make Sure the swagger file is named as swagger.yaml  
 2) Run the command 'oastokong'
     This will deploy the API in kong gateway 
 
-
 #### Example
 
 ```bash
-$ toenvoy
-$ cd envoy-proxy
-$ chmod 777 run.sh
-$ ./run.sh
+$ oastokong
 ```
+
 Credits - oclif framework  https://oclif.io
