@@ -21,8 +21,8 @@ class Oastokong extends Command {
 
     const name = flags.name || 'world'
     this.log(`hello ${name} from ./src/index.ts`)
-    
-    var rslt = readSwagger.main();
+    //wat till the results
+    var rslt = await readSwagger.main();
     console.info(rslt);
   }
 }
