@@ -114,7 +114,7 @@ async function createService(name: any, host: any, tags: any) {
       } else {
         var data = await body;
         if (data.id == null) {
-          console.log("Service Name Alredy Exits");
+          console.log("Service Name Alredy Exits",response.body);
         } else {
           seviceID = await data.id;
           console.log("Service Created");
@@ -321,7 +321,8 @@ async function swagger2(swagger:any){
 async function oas3(swagger:any){
     return new Promise(async function(resolve,reject){  
     try {
-      host =swagger.servers["0"]+"/";
+    console.log("Swagger",swagger.servers["0"])
+      host =swagger.servers["0"].url+"/";
       var name = swagger.info.title;
       name = name.replace(/\W/g, "");
       url = konguri + name + "/routes";
