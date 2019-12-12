@@ -31,6 +31,8 @@ $ npm install -g oastokong
 # Runnig the Cli-Tool
 Make sure kong Admin APi is runing on the localhost:8001 and Admin api security is disabled.
 
+
+# 1st Methord
 1) Navigate to the location where the swagger file is located 
    Make Sure the swagger file is named as swagger.yaml  
 2) Run the command 'oastokong'
@@ -40,6 +42,20 @@ Make sure kong Admin APi is runing on the localhost:8001 and Admin api security 
 
 ```bash
 $ oastokong
+```
+
+# 2nd Methord
+
+1) Navigate to the location where the swagger/OAS file is located 
+2) Run the command 'oastokong -n='$file_name'
+    This will deploy the API in kong gateway 
+
+#### Example
+
+Assume that the swagger definition is in a file called my file in Yaml format 
+
+```bash
+$ oastokong -n=myfile.yaml
 ```
 
 Credits - oclif framework  https://oclif.io
