@@ -21,13 +21,7 @@ class Oastokong extends Command {
 
     const name = flags.name || 'swagger.yaml'
     this.log(`hello ${name} from ./src/index.ts`)
-<<<<<<< HEAD
-    //wat till the results
     var rslt = await readSwagger.main(name);
-=======
-    
-    var rslt = await readSwagger.main(name);
->>>>>>> oas
     console.info(rslt);
   }
 }
