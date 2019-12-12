@@ -15,7 +15,7 @@ const readFile = require("./apiYaml");
 var swagger: any, apiYaml: any, url: any, host: String, ans, seviceID: any;
 var konguri = "http://localhost:8001/services/";
 
-async function main(filename:any) {
+async function main(filename:string) {
   return new Promise(async function(resolve, reject) {
     try {
       printData();
@@ -62,7 +62,7 @@ async function getinput() {
 }
 
 // Reding the yaml file and tehn creating the service in Kong
-async function rel(filename:any) {
+async function rel(filename:string) {
   try {
     readYaml(filename, async function(err: any, data: any) {
       if (err) {
