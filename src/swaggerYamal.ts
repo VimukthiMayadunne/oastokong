@@ -15,11 +15,11 @@ const readFile = require("./apiYaml");
 var swagger: any, apiYaml: any, url: any, host: String, ans, seviceID: any;
 var konguri = "http://localhost:8001/services/";
 
-async function main() {
+async function main(filename:any) {
   return new Promise(async function(resolve, reject) {
     try {
       printData();
-      await rel();
+      await rel(filename);
       resolve(0);
     } catch (err) {
       console.error("Unbale to excute the command", err);
@@ -54,7 +54,7 @@ async function getinput() {
     ];
     ans = await inquirer.prompt(questions);
     konguri = await ans.name;
-    await rel();
+    await rel(__filename);
   } catch (Error) {
     console.log("Error While Taking the input");
     console.log(Error);
@@ -62,9 +62,9 @@ async function getinput() {
 }
 
 // Reding the yaml file and tehn creating the service in Kong
-async function rel() {
+async function rel(filename:any) {
   try {
-    readYaml("swagger.yaml", async function(err: any, data: any) {
+    readYaml(filename, async function(err: any, data: any) {
       if (err) {
         console.log("Unable To Read the Swagger File");
       } else {
